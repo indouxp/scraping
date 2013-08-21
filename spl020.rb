@@ -25,7 +25,8 @@ activity_url = "https://portal.aws.amazon.com/gp/aws/developer/account?ie=UTF8&a
 driver.navigate.to activity_url
 
 select = Selenium::WebDriver::Support::Select.new(driver.find_element(:name, 'statementTimePeriod'))
-select.select_by(:index, 50)
+
+select.select_by(:text, 'January 1 - January 31, 2010')
 
 sleep 10
 
