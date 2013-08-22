@@ -67,8 +67,9 @@ begin
       if driver.find_elements(:class, 'invoices').empty?
         puts driver.find_element(:id, 'billingSummary').text
       else
-        elm = driver.find_element(:class, 'subsectionTotal')
-        puts elm.text
+        elms = driver.find_elements(:class, 'subsectionTotal')[0].find_elements(:class, 'subtotal')
+        puts elms[0].text
+        break
       end
     end
   end
