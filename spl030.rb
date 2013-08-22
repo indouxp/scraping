@@ -38,6 +38,7 @@ elms.each do |elm|
     ok = true
   end
 end
+exit 1 unless ok == true
 
 # ドロップダウンリスト
 select = Selenium::WebDriver::Support::Select.new(driver.find_element(:name, 'statementTimePeriod'))
@@ -64,12 +65,11 @@ begin
     if elm.find_elements(:id, 'summary_funct_tr').empty?
       puts elm.text
     else
-      if driver.find_elements(:class, 'invoices').empty?
-        puts driver.find_element(:id, 'billingSummary').text
-      else
-        elms = driver.find_elements(:class, 'subsectionTotal')[0].find_elements(:class, 'subtotal')
+      elms = driver.find_elements(:class, 'taupeHeader')
+      unless elms.empty?
         puts elms[0].text
-        break
+      else
+        # error
       end
     end
   end
