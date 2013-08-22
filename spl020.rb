@@ -26,27 +26,39 @@ driver.find_element(:id, 'signInSubmit').click
 activity_url = "https://portal.aws.amazon.com/gp/aws/developer/account?ie=UTF8&action=activity-summary"
 driver.navigate.to activity_url
 
-select = Selenium::WebDriver::Support::Select.new(driver.find_element(:name, 'statementTimePeriod'))
-
 wait = Selenium::WebDriver::Wait.new(:timeout => 1) # seconds
 
-select.select_by(:text, 'May 1 - May 31, 2013')
-wait.until { driver.find_element(:id, 'account_activity_table_tab_content') }
-puts "step03"
+select = Selenium::WebDriver::Support::Select.new(driver.find_element(:name, 'statementTimePeriod'))
 begin
-  wait.until { driver.find_element(:class, 'bold padbot5') }
-  puts "step04"
-rescue => evar
-  p $!
-  p evar
+  
+  STDERR.puts "01"
+  select.select_by(:text, 'May 1 - May 31, 2013')
+  STDERR.puts "02"
+  wait.until { driver.find_element(:id, 'account_activity_table_tab_content') }
+  STDERR.puts "03"
+
+rescue => eval
+  STDERR.puts eval
+  # ブラウザ終了
+  driver.quit
+  exit 1
 end
-puts "step05"
 
-select.select_by(:text, 'January 1 - January 31, 2010')
-wait.until { driver.find_element(:id, 'account_activity_table_tab_content') }
-wait.until { driver.find_element(:class, 'bold padbot5') }
+select = Selenium::WebDriver::Support::Select.new(driver.find_element(:name, 'statementTimePeriod'))
+begin
+  
+  STDERR.puts "11"
+  select.select_by(:text, 'June 1 - June 30, 2012')
+  STDERR.puts "12"
+  wait.until { driver.find_element(:id, 'account_activity_table_tab_content') }
+  STDERR.puts "13"
 
-sleep 10
+rescue => eval
+  STDERR.puts eval
+  # ブラウザ終了
+  driver.quit
+  exit 1
+end
 
-# ブラウザ終了
 driver.quit
+exit 0
