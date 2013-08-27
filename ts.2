@@ -1094,7 +1094,7 @@ $(document).ready(function() {
   
 
 <div style="font-size: 16px;" class="bold padbot5">
-    請求期間: June 1 - June 30, 2013
+    請求期間: July 1 - July 31, 2013
 </div>
   <div style="font-weight: normal; font-size: 11px; margin-top: 10px; margin-bottom: 10px;">
   </div>
@@ -1104,8 +1104,8 @@ $(document).ready(function() {
       別の請求明細を選択:
       <select name="statementTimePeriod" onchange="$(this).closest('form').submit()">
         <option  value="">現在の請求明細</option> 
-          <option  value="1372636800">July 1 - July 31, 2013</option>
-          <option selected = 'true' value="1370044800">June 1 - June 30, 2013</option>
+          <option selected = 'true' value="1372636800">July 1 - July 31, 2013</option>
+          <option  value="1370044800">June 1 - June 30, 2013</option>
           <option  value="1367366400">May 1 - May 31, 2013</option>
           <option  value="1364774400">April 1 - April 30, 2013</option>
           <option  value="1362096000">March 1 - March 31, 2013</option>
@@ -1169,27 +1169,6 @@ $(document).ready(function() {
 
 
 <br/>
-  <div id="billingSummary">
-    <div class="blueHeader">
-      概略<a name="summary"></a>
-    </div>
-      <div style="padding: 8px;">この請求期間には、お客様にお支払いいただくアクティビティはありません。</div>
-
-    <div class="taupeHeader">
-      <span class="right">&#36;0.00</span>
-      この請求明細における新規料金合計
-    </div>
-
-
-
-      <div style="padding: 8px; border-bottom: 1px solid #cccc99;">
-          現在までに支払いは受け取っていません。
-      </div>
-      <div class="taupeHeader" style="background-color: #D4D6AA;">
-        <span class="right">&#36;0.00</span>
-        この請求明細における残高
-      </div>
-  </div>
 
   
 
@@ -1211,154 +1190,11 @@ $(document).ready(function() {
 </style>
 
     <table class="summaryTable" cellspacing="0" cellpadding="0" border="0" width="100%" align="top" >
-        
-
-
-
-
-
         <tr>
-          <td colspan="2">
-            
-
-
-
+          <td class="padltrt3 padtop2 padbot5 txtsm bold" valign="center" align="left" >
+            <span class="bold" >この期間にはあなたの実績はありません。</span>
           </td>
         </tr>
-
-        <tr id="summary_funct_tr">
-          <td>
-            <table width="100%" style="bordCollapse">
-              <tr>
-                <td valign="center" class="txtxsm bold pad3" align="left" width="90%">
-                  <span id="expandAll"><a>全てのサービスを展開</a></span> 
-                  <span id="expandAllText" style="display:none">全てのサービスを展開</span>
-                  |
-                  <span id="collapseAll" style="display:none"><a>全てのサービスを閉じる</a></span> 
-                  <span id="collapseAllText">全てのサービスを閉じる</span>
-                </td>
-                <td valign="center" class="txtxsm bold pad3" align="center" width="10%" nowrap="nowrap">
-                  <a href="javascript:printBillSummary()">印刷用画面</a>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      
-
-          <tr id="bill921091391965" >
-            <td valign="center" align="left" >
-              <table width="100%" border="0" cellspacing="0" cellpadding="0" >
-                  <tr>
-                    <td class="taupeHeader bordgreybot bordgreytop" colspan="5">
-                      <span class="right">&#36;0.00</span>
-                      <a name="ATVPDKIKX0DER"></a>
-                      AWS Service Charges
-                    </td>
-                  </tr>
-
-
-                      <tr>
-                        <td width="14" class="bordgreybot padlt3 padtop2 aligntop" style="padding-top: 4px;">
-                            <a id="toggle_AmazonSNS921091391965ATVPDKIKX0DER"><img src="https://images-na.ssl-images-amazon.com/images/G/01/webservices/ja/icon_expand._V174119381_.gif" width="14" height="14" border="0" /></a>
-                        </td>
-                        <td class="bordgreybot padbot2" align="left" colspan="3">                        
-                          <span class="hdrdkorange" ><nobr>Amazon Simple Notification Service</nobr></span>
-                          <span class="txtxxsm">
-                                <br/>
-                                <nobr>
-                                  <a href="https://portal.aws.amazon.com/gp/aws/developer/account/usage-report.html?ie=UTF8&amp;timePeriod=1370044800&amp;productCode=AmazonSNS">利用レポートのダウンロード</a> <span class="txtxxsm bold orange">&#187;</span>
-                                </nobr>
-                          </span>
-                        </td>
-                        <td class="bold bordgreybot alignrt" style="font-size: 12px;">
-                          &#36;0.00
-                        </td>
-                      </tr>
-                      
-
-                            <tr style="display:none;" id="AmazonSNS921091391965ATVPDKIKX0DERitem0">
-                                 <td class="bordgreybot txtxsm bold padlt20" colspan="5">US West (Oregon) Region</td>
-                            </tr>
-                                  <tr style="display:none;" id="AmazonSNS921091391965ATVPDKIKX0DERitem1">
-                                    <td width="14" class="bordgreybot">&nbsp;</td>
-                                    <td class="bordgreybot txtxxsm" width="10%">&nbsp;</td>
-                                    <td class="bordgreybot txtxsm" >                                      
-                                      First 1,000,000 Amazon SNS API Requests per month are free
-                                    </td>
-                                    <td class="bordgreybot txtxsm" >
-                                      4 Requests
-                                    </td>
-                                    <td class="bordgreybot txtxsm alignrt" >
-                                        0.00<br/>
-                                    </td>
-                                  </tr>
-                  <tr>
-                    <td width="14" class="bordbrbot padlt3 padtop2 aligntop" style="padding-top: 4px;">
-                      <a id="toggle_taxBreakdownVAT_ATVPDKIKX0DER"><img src="https://images-na.ssl-images-amazon.com/images/G/01/webservices/ja/icon_expand._V174119381_.gif" width="14" height="14" border="0" /></a>&nbsp;
-                    </td>
-                    <td colspan="3" class="bordbrbot pad3 hdrdkorange">VAT to be collected</td>
-                    <td class="pad3 alignrt bold bordbrbot" style="font-size: 12px;">
-                      &#36;0.00
-                    </td>
-                  </tr>
-                  <tr id="taxBreakdownVAT_ATVPDKIKX0DER" style="display: none;">
-                    <td class="bordbrbot txtxxsm" width="14">&nbsp;</td>
-                    <td class="bordbrbot txtxxsm" width="10%">&nbsp;</td>
-                    <td class="bordbrbot txtxsm" colspan="2">VAT for Usage Charges and Recurring Fees<!--使用料金および月額料金の付加価値税（VAT）--></td>
-                    <td class="bordbrbot txtxsm pad3 alignrt">&#36;0.00</td>
-                  </tr>
-                  <tr id="taxBreakdownVAT_ATVPDKIKX0DER" style="display: none;">
-                    <td class="bordbrbot txtxxsm" width="14">&nbsp;</td>
-                    <td class="bordbrbot txtxxsm" width="10%">&nbsp;</td>
-                    <td class="bordbrbot txtxsm" colspan="2">VAT for New Purchases and Adjustments<!--新規購入および調整の付加価値税（VAT）--></td>
-                    <td class="bordbrbot txtxsm pad3 alignrt">&#36;0.00</td>
-                  </tr>
-                  <tr>
-                    <td width="14" class="bordbrbot padlt3 padtop2 aligntop" style="padding-top: 4px;">
-                      <a id="toggle_taxBreakdownGST_ATVPDKIKX0DER"><img src="https://images-na.ssl-images-amazon.com/images/G/01/webservices/ja/icon_expand._V174119381_.gif" width="14" height="14" border="0" /></a>&nbsp;
-                    </td>
-                    <td colspan="3" class="bordbrbot pad3 hdrdkorange">GST to be collected</td>
-                    <td class="pad3 alignrt bold bordbrbot" style="font-size: 12px;">
-                      &#36;0.00
-                    </td>
-                  </tr>
-                  <tr id="taxBreakdownGST_ATVPDKIKX0DER" style="display: none;">
-                    <td class="bordbrbot txtxxsm" width="14">&nbsp;</td>
-                    <td class="bordbrbot txtxxsm" width="10%">&nbsp;</td>
-                    <td class="bordbrbot txtxsm" colspan="2">GST for Usage Charges and Recurring Fees<!--使用料金および月額料金の付加価値税（VAT）--></td>
-                    <td class="bordbrbot txtxsm pad3 alignrt">&#36;0.00</td>
-                  </tr>
-                  <tr id="taxBreakdownGST_ATVPDKIKX0DER" style="display: none;">
-                    <td class="bordbrbot txtxxsm" width="14">&nbsp;</td>
-                    <td class="bordbrbot txtxxsm" width="10%">&nbsp;</td>
-                    <td class="bordbrbot txtxsm" colspan="2">GST for New Purchases and Adjustments<!--新規購入および調整の付加価値税（VAT）--></td>
-                    <td class="bordbrbot txtxsm pad3 alignrt">&#36;0.00</td>
-                  </tr>
-                  <tr>
-                    <td width="14" class="bordbrbot padlt3 padtop2 aligntop" style="padding-top: 4px;">
-                      <a id="toggle_taxBreakdownUSTax_ATVPDKIKX0DER"><img src="https://images-na.ssl-images-amazon.com/images/G/01/webservices/ja/icon_expand._V174119381_.gif" width="14" height="14" border="0" /></a>&nbsp;
-                    </td>
-                    <td colspan="3" class="bordbrbot pad3 hdrdkorange">US Tax to be collected</td>
-                    <td class="pad3 alignrt bold bordbrbot" style="font-size: 12px;">
-                      &#36;0.00
-                    </td>
-                  </tr>
-                  <tr id="taxBreakdownUSTax_ATVPDKIKX0DER" style="display: none;">
-                    <td class="bordbrbot txtxxsm" width="14">&nbsp;</td>
-                    <td class="bordbrbot txtxxsm" width="10%">&nbsp;</td>
-                    <td class="bordbrbot txtxsm" colspan="2">US Tax for Usage Charges and Recurring Fees<!--使用料金および月額料金の付加価値税（VAT）--></td>
-                    <td class="bordbrbot txtxsm pad3 alignrt">&#36;0.00</td>
-                  </tr>
-                  <tr id="taxBreakdownUSTax_ATVPDKIKX0DER" style="display: none;">
-                    <td class="bordbrbot txtxxsm" width="14">&nbsp;</td>
-                    <td class="bordbrbot txtxxsm" width="10%">&nbsp;</td>
-                    <td class="bordbrbot txtxsm" colspan="2">US Tax for New Purchases and Adjustments<!--新規購入および調整の付加価値税（VAT）--></td>
-                    <td class="bordbrbot txtxsm pad3 alignrt">&#36;0.00</td>
-                  </tr>
-              </table>
-            </td>
-          </tr>
     </table>
 <script type="text/javascript">
 
@@ -1416,17 +1252,17 @@ $(document).ready(function() {
             <tbody>
               <tr>
                 <td class="pad3 bold txtsm">
-                  May 1 - May 31, 2013
+                  June 1 - June 30, 2013
                 </td>
                 <td class="pad3 txtxsm alignrt">
-                  <a href="https://portal.aws.amazon.com/gp/aws/developer/account/index.html?ie=UTF8&amp;statementTimePeriod=1367366400&amp;action=activity-summary">計算書全体の表示</a> <span class="txtxxsm orange bold">&#187;</span>
+                  <a href="https://portal.aws.amazon.com/gp/aws/developer/account/index.html?ie=UTF8&amp;statementTimePeriod=1370044800&amp;action=activity-summary">計算書全体の表示</a> <span class="txtxxsm orange bold">&#187;</span>
                 </td>
               </tr>
               <tr>
                 <td class="lttaupe pad3 bold">合計料金</td>
                 <td class="lttaupe pad3 bold alignrt">
                   <nobr>
-                    0.74
+                    0.00
                   </nobr>
                 </td>
               </tr>
@@ -1459,8 +1295,8 @@ $(document).ready(function() {
           <tr>
         <td>
           <span class="bold">アマゾン ウェブ サービス</span><br/>
-          <span class="bold">請求書計算書：</span> June 1 - June 30, 2013<br/>
-          <span class="bold">印刷された日付：</span> August 22, 2013
+          <span class="bold">請求書計算書：</span> July 1 - July 31, 2013<br/>
+          <span class="bold">印刷された日付：</span> August 27, 2013
         </td>
         <td class="padlt20"><p><span class="bold">Name:</span> Tatsuo Indou<br />
           <span class="bold">Eメール: </span>tatsuo-i@mtb.biglobe.ne.jp<br />
