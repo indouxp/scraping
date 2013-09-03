@@ -5,6 +5,8 @@ require "selenium-webdriver"
 $debug = true
 username = "tatsuo-i@mtb.biglobe.ne.jp"
 password = "intatsu1645"
+#username = ARGV[0]
+#password = ARGV[1]
 
 # ブラウザ起動
 # :chrome, :firefox, :safari, :ie, :operaなどに変更可能
@@ -25,15 +27,18 @@ begin
     STDERR.puts "#{reg}が存在しません"
     raise
   end
-  elm_content = driver.find_elements(:id, "Content")
-  elm_logins = elm_content.find_element(:class, "login")
-  elm_logins.each do | elm |
-    puts "----------"
-    puts elm.text
-  end
+  elm_content = driver.find_element(:id, "Content")
+  elm_table = elm_content.find_element(:xpath, "//div/form/table")
+  elm_id = elm_table.find_element(:id, "username")
+  elm_id.clear
+  elm_id.send_keys(username)
+  elm_pw = elm_table.find_element(:id, "password")
+  elm_pw.clear
+  elm_pw.send_keys(password)
+  elm_table.find_element(:name, "commit").click
 
 rescue => eval
-  #STDERR.puts eval.backtrace.join("\n")
+  STDERR.puts eval.backtrace.join("\n")
   STDERR.puts eval
   exit 1
 ensure
