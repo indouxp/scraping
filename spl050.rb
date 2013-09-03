@@ -3,7 +3,7 @@
 
 require "selenium-webdriver"
 $debug = true
-username = "tatsuo-i@mtb.biglobe.ne.jp"
+username = "indou.tsystem@gmail.com"
 password = "intatsu1645"
 #username = ARGV[0]
 #password = ARGV[1]
