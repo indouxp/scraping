@@ -25,8 +25,7 @@ begin
     STDERR.puts "#{reg}が存在しません"
     raise
   end
-  elm_content = driver.find_elements(:id, "content")
-  puts elm_content.text
+  elm_content = driver.find_elements(:id, "Content")
   elm_logins = elm_content.find_element(:class, "login")
   elm_logins.each do | elm |
     puts "----------"
@@ -34,7 +33,7 @@ begin
   end
 
 rescue => eval
-  STDERR.puts eval.backtrace.join("\n")
+  #STDERR.puts eval.backtrace.join("\n")
   STDERR.puts eval
   exit 1
 ensure
