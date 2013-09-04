@@ -39,7 +39,7 @@ begin
                     find_element(:id, "HeaderInner").
                     find_element(:id, "GlobalMenu")
   elm_a = elm_menu.find_element(:xpath, "//ul/li")
-  elm_a.text.click
+  elm_a.click
 
 rescue => eval
   STDERR.puts eval.backtrace.join("\n")
