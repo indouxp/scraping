@@ -23,6 +23,6 @@ while line = ARGF.gets
       stack_level += 1
     end
   else
-    output(line, stack_level)
+    output(line.gsub(/[><]/, ""), stack_level)
   end
 end
