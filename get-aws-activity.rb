@@ -2,8 +2,8 @@ require "selenium-webdriver"
 require "./convert_ymd"
 
 $debug = true
-username = "tatsuo-i@mtb.biglobe.ne.jp"
-password = "InTatsu$1645"
+username = ARGV[0]
+password = ARGV[1]
 
 # ログイン
 def login(driver, username, password)

@@ -14,7 +14,6 @@ driver = Selenium::WebDriver.for :chrome
 wait = Selenium::WebDriver::Wait.new(:timeout => 10) # seconds
 
 begin
-  # aws 
   login_url = "http://crowdworks.jp/"
   driver.navigate.to login_url
   elm_login = driver.find_element(:id, "SideMenu").
@@ -36,6 +35,11 @@ begin
   elm_pw.clear
   elm_pw.send_keys(password)
   elm_table.find_element(:name, "commit").click
+  elm_menu = driver.find_element(:id, "Header").
+                    find_element(:id, "HeaderInner").
+                    find_element(:id, "GlobalMenu")
+  elm_a = elm_menu.find_element(:xpath, "//ul/li")
+  elm_a.text.click
 
 rescue => eval
   STDERR.puts eval.backtrace.join("\n")

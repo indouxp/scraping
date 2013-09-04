@@ -12,7 +12,7 @@ begin
   html = "file:///home/indou/work/scraping/ts.2.html"
   elm_html = driver.get html
   elm_content = driver.find_element(:id, "Content")
-  elm_tmp = elm_content.find_element(:xpath, "//div/form")
+  elm_tmp = elm_content.find_element(:xpath, "//div/form/table")
   puts elm_tmp.text
 
 rescue => eval
