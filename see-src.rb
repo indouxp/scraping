@@ -1,7 +1,11 @@
 # -*- coding:utf-8 -*-
 
 def output(line, stack_level)
-  printf "%02d:%s%s\n", stack_level, "  " * stack_level, line
+  if /</ =~ line
+    printf "%02d:%s%s\n", stack_level, "  " * stack_level, line
+  else
+    printf "%2s:%s%s\n", " ", "  " * stack_level, line
+  end
 end
 
 stack_level = 0
