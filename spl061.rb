@@ -1,4 +1,4 @@
-# *-* coding:utf-8 *-*
+# coding: utf-8
 # クラウドワークス
 require "selenium-webdriver"
 $debug = true
@@ -26,26 +26,14 @@ begin
   rescue => eval
     raise eval
   end
-  recs = elm_table.find_elements(:xpath, "//tr")
-  row_no = 0
-  recs.each do |rec|
-    unless row_no == 0
-    #if row_no == 1
-      printf "\nNo. %02d\n", row_no
-      puts rec.text
-      datas = rec.find_elements(:xpath, "//td")
-      #puts datas.size
-      data_no = 0
-      datas.each do |data|
-        printf "\nNo. %02d-%02d/%02d\n", row_no, data_no, datas.size
-        puts "class:[#{data.attribute("class")}]"
-        puts "text:[#{data.text.gsub(/\r\n|\r|\n/, "")}]"
-        data_no += 1
-      end
-    end
-    row_no += 1
+  datas = elm_table.find_elements(:xpath, "//tr/td")
+  data_no = 0
+  datas.each do |data|
+    printf "\nNo. %02d/%02d\n", data_no, datas.size
+    puts "class:[#{data.attribute("class")}]"
+    puts "text:[#{data.text.gsub(/\r\n|\r|\n/, "")}]"
+    data_no += 1
   end
-
 rescue => eval
   STDERR.puts eval.backtrace.join("\n")
   STDERR.puts eval
