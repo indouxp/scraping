@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+# tatsuo-i@mtb.biglobe.ne.jp
 require "selenium-webdriver"
 require "./convert_ymd"
 
@@ -16,8 +18,12 @@ def login(driver, username, password)
   elm_pass.clear
   elm_pass.send_keys(password)
 
+  sleep 5
   # アカウントの管理画面へ遷移
   driver.find_element(:id, "signInSubmit").click
+
+  sleep 5
+
 end
 
 # アカウントアクティビティ
@@ -105,11 +111,12 @@ begin
     wait.until { driver.find_element(:id, "account_activity_table_tab_content") }
     activity_report(driver)
   end
+  driver.quit
 rescue => eval
   STDERR.puts eval.backtrace.join("\n")
   STDERR.puts eval
   exit 1
 ensure
-  driver.quit
+  #driver.quit
 end
 exit 0
