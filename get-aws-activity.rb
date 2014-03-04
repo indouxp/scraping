@@ -1,3 +1,4 @@
+# encoding: utf-8
 require "selenium-webdriver"
 require "./convert_ymd"
 
@@ -105,11 +106,12 @@ begin
     wait.until { driver.find_element(:id, "account_activity_table_tab_content") }
     activity_report(driver)
   end
+  driver.quit
 rescue => eval
   STDERR.puts eval.backtrace.join("\n")
   STDERR.puts eval
   exit 1
-ensure
-  driver.quit
+#ensure
+#  driver.quit
 end
 exit 0
