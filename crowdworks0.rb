@@ -24,6 +24,7 @@ logging.puts "find_element commit ok"
 puts "sleeping ..."
 sleep
 
-# ブラウザ終了
 driver.quit
 logging.close
+
+exit true
