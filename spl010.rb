@@ -1,3 +1,7 @@
+# coding:utf-8
+#
+# ブラウザ起動のみ
+#
 require 'selenium-webdriver'
 
 # ブラウザ起動

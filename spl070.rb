@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#
+# let's note一覧
 #
 require "selenium-webdriver"
 $debug = false

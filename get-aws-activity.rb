@@ -117,6 +117,6 @@ rescue => eval
   STDERR.puts eval
   exit 1
 ensure
-  #driver.quit
+  driver.quit
 end
 exit 0
