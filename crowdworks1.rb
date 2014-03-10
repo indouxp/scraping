@@ -8,10 +8,9 @@ def find_element_and_send(driver, selector, selector_name, send_string)
     elm = driver.find_element(selector, selector_name)
     elm.send_keys(send_string)
   rescue => eval
+    puts "selector:#{selector}, selector name:#{selector_name}, send:#{send_string}"
     puts caller()
-    abort "ERROR:#{eval}"
-  ensure
-    driver.quit
+    error_quit(driver, eval)
   end
 end
 
@@ -21,11 +20,15 @@ def find_element_and_click(driver, selector, selector_name)
     elm.click
     return "selector:#{selector} selector name:#{selector_name}"
   rescue => eval
+    puts "selector:#{selector}, selector name:#{selector_name}"
     puts caller()
-    abort "ERROR:#{eval}"
-  ensure
-    driver.quit
+    error_quit(driver, eval)
   end
+end
+
+def error_quit(driver, eval)
+  abort "ERROR:#{eval}"
+  driver.quit
 end
 
 logging = Logging.new
@@ -41,7 +44,7 @@ find_element_and_send(driver, :id, "username", "indou.tsystem@gmail.com")
 
 find_element_and_send(driver, :id, "password", "intatsu1645")
 
-find_element_and_click(driver, :name, "commit")
+find_element_and_click(driver, :name, "ckommit")
 
 driver.quit
 logging.close
