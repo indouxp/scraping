@@ -19,6 +19,8 @@ def main
   find_element_and_send(driver, :id, "password", "intatsu1645")
 
   find_element_and_click(driver, :name, "commit")
+  find_element_and_click(driver, :css, "span")
+  find_element_and_click(driver, :link, "開発")
 
   driver.quit
   logging.close
@@ -53,8 +55,8 @@ def find_element_and_click(driver, selector, selector_name)
 end
 
 def error_quit(driver, eval, msg)
-  abort "#{msg} fail.\n:#{eval}"
   driver.quit
+  abort "#{msg} fail.\n:#{eval}"
 end
 
 main
