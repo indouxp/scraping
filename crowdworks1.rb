@@ -15,10 +15,9 @@ def main
   logging.puts "driver.get ok"
 
   find_element_and_send(driver, :id, "username", "indou.tsystem@gmail.com")
-
   find_element_and_send(driver, :id, "password", "intatsu1645")
-
   find_element_and_click(driver, :name, "commit")
+
   find_element_and_click(driver, :css, "span")
   find_element_and_click(driver, :link, "開発")
 
@@ -26,7 +25,6 @@ def main
   logging.close
 
 end
-
 
 def find_element_and_send(driver, selector, selector_name, send_string)
   begin
