@@ -59,12 +59,18 @@ def find_elements_and_click(driver, selectors)
   begin
     selector = selectors[:selector]
     selector_names = selectors[:selector_names]
-    elms = []
+    array_elms = []
     selector_names.each do |name|
-      elms.push(driver.find_elements(selector, name))
+      array_elms.push(driver.find_elements(selector, name))
     end
     selectors[:judges].each do |key, value|
       puts "#{key}:#{value}"
+    end
+    array_elms.each do |elms|
+      elms.each do |elm|
+         puts elm
+         puts elm.text
+      end
     end
     #elm.click
     return "selector:#{selector} selector name:#{selector_names}"
