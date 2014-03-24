@@ -14,13 +14,26 @@ def main
   login(driver, login_url, user, pass, confirm)
 
   xpath = {}
-  xpath[:xpath] = '//*[@id="GlobalMenu"]/ul/li[1]/a'      # 仕事を探す
+
+  search_job_xpath = '//*[@id="GlobalMenu"]/ul/li[1]/a'             # 仕事を探す
+  xpath[:xpath] = search_job_xpath + "/img"
+  unless driver.find_element(xpath).attribute("alt") == "仕事を探す"
+    raise "仕事を探す"
+  end
+  xpath[:xpath] = search_job_xpath
   driver.find_element(xpath).click
+
   xpath[:xpath] = '//*[@id="Content"]/div[1]/ul/li[2]/a'  # 開発
+  raise "開発" unless driver.find_element(xpath).text == "開発"
   driver.find_element(xpath).click
+
   xpath[:xpath] =                                         # 表示順=応募期限が近い
   '//*[@id="result_jobs"]/div[1]/div/div[1]/div/div/select/option[5]' 
+  raise "応募期限が近い" unless  driver.find_element(xpath).text == "応募期限が近い"
   driver.find_element(xpath).click
+
+  xpath[:xpath] = '//*[@id="result_jobs"]/div[2]/div/ul'
+  jobs = driver.find_element(xpath)
 end
 
 def login(driver, login_url, user, pass, confirm)
