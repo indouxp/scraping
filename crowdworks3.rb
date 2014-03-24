@@ -34,6 +34,11 @@ def main
 
   xpath[:xpath] = '//*[@id="result_jobs"]/div[2]/div/ul'
   jobs = driver.find_element(xpath)
+  rows = jobs.find_elements(:class => 'job_data')
+  puts rows.size
+  rows.each do |row|
+    puts row.text
+  end
 end
 
 def login(driver, login_url, user, pass, confirm)
