@@ -3,29 +3,26 @@
 require 'selenium-webdriver'
 require "../samples/rb/log010.rb"
 
+$logging = Logging.new
+
 def main
 
-  logging = Logging.new
 
   driver = Selenium::WebDriver.for :chrome
-  logging.puts "driver ok"
+  $logging.puts "driver ok"
 
   login_url = "http://crowdworks.jp/login"
   driver.get(login_url + "/")
-  logging.puts "driver.get ok"
+  $logging.puts "driver.get ok"
 
   find_element_and_send(driver, :id, "username", "indou.tsystem@gmail.com")
   find_element_and_send(driver, :id, "password", "intatsu1645")
   find_element_and_click(driver, :name, "commit")
 
-  find_elements_and_click(driver, {
-                                  :selector => "class",
-                                  :selector_names => ["jobs", "limited"],
-                                  :judges => {"alt" => "仕事を探す"}
-                                  })
+  driver.find_element(:xpath => '//*[@id="GlobalMenu"]/ul/li[1]/a').click # 仕事を探す
 
-  driver.quit
-  logging.close
+  #driver.quit
+  $logging.close
 
 end
 
