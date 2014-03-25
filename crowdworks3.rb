@@ -6,16 +6,16 @@ require "../samples/rb/log010.rb"
 $logging = Logging.new
 
 def main
+  driver = Selenium::WebDriver.for :chrome
   user = "indou.tsystem@gmail.com"
   pass = "intatsu1645"
   confirm = "ログインしました。"
-  driver = Selenium::WebDriver.for :chrome
   login_url = "http://crowdworks.jp/login"
   login(driver, login_url, user, pass, confirm)
 
   params = {}
 
-  search_job_xpath = '//*[@id="GlobalMenu"]/ul/li[1]/a'             # 仕事を探す
+  search_job_xpath = '//*[@id="GlobalMenu"]/ul/li[1]/a'   # 仕事を探す
   params[:xpath] = search_job_xpath + "/img"
   unless driver.find_element(params).attribute("alt") == "仕事を探す"
     raise "仕事を探す"
@@ -34,10 +34,15 @@ def main
 
   params[:xpath] = '//*[@id="result_jobs"]/div[2]/div/ul'
   jobs = driver.find_element(params)
-  rows = jobs.find_elements(:class => 'job_data')
+  rows = jobs.find_elements(:tag_name => 'li')
   puts rows.size
+  count = 0
   rows.each do |row|
     puts row.text
+    if count == 0
+      puts row.methods
+    end
+    count += 1
   end
 end
 
