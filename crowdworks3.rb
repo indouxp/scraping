@@ -2,7 +2,9 @@
 # SUMMARY:crodworksの募集している仕事を取得
 #
 require 'selenium-webdriver'
+require 'nokogiri'
 require "../samples/rb/log010.rb"
+
 $logging = Logging.new
 
 def main
@@ -32,17 +34,16 @@ def main
   raise "応募期限が近い" unless  driver.find_element(params).text == "応募期限が近い"
   driver.find_element(params).click
 
+  #source = driver.page_source # htmlを取得
+  #doc = Nokogiri::HTML(source)
+  #puts doc
+
   params[:xpath] = '//*[@id="result_jobs"]/div[2]/div/ul'
   jobs = driver.find_element(params)
   rows = jobs.find_elements(:tag_name => 'li')
-  puts rows.size
   count = 0
   rows.each do |row|
     puts row.text
-    if count == 0
-      puts row.methods
-    end
-    count += 1
   end
 end
 
