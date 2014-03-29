@@ -34,11 +34,15 @@ def main
   raise "応募期限が近い" unless  driver.find_element(params).text == "応募期限が近い"
   driver.find_element(params).click
 
-  html = driver.page_source # htmlを取得
-  doc = Nokogiri::HTML.parse(html, nil, 'UTF-8')
-  puts html
-  puts "-----"
-
+  #html = driver.page_source # htmlを取得
+  #doc = Nokogiri::HTML.parse(html, nil, 'UTF-8')
+  #puts html
+  #puts "-----"
+  lis = driver.find_elements(:xpath => '//*[@id="result_jobs"]/div[2]/div/ul/li')
+  lis.size.times do | count |
+    driver.find_element(:xpath => '//*[@id="result_jobs"]/div[2]/div/ul/li[' + "#{count + 1}" + ']')
+    puts "ok:#{count + 1}"
+  end
   return driver
 end
 
