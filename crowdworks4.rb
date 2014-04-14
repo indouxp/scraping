@@ -2,18 +2,21 @@
 # SUMMARY:crodworksの募集している仕事を取得
 #
 require 'selenium-webdriver'
-require 'nokogiri'
+require 'yaml'
 require "../samples/rb/log010.rb"
 
 $logging = Logging.new
 
 def main
+  yaml_file = File.dirname($0) + "/" + "crowdworks.txt"
+  data = YAML.load_file(yaml_file)
   driver = Selenium::WebDriver.for :chrome
-  user = "indou.tsystem@gmail.com"
-  pass = "intatsu1645"
+  user = data["user"]
+  pass = data["pass"]
   confirm = "ログインしました。"
   login_url = "http://crowdworks.jp/login"
   login(driver, login_url, user, pass, confirm)
+  $logging.puts("開始 user:#{user}")
 
   params = {}
 
@@ -34,23 +37,23 @@ def main
   raise "応募期限が近い" unless  driver.find_element(params).text == "応募期限が近い"
   driver.find_element(params).click
 
-  #html = driver.page_source # htmlを取得
-  #doc = Nokogiri::HTML.parse(html, nil, 'UTF-8')
-  #puts html
-  #puts "-----"
   base_url = "https://crowdworks.jp"
   no = 0
   done = false
   until done
     lis = driver.find_elements(:xpath => '//*[@id="result_jobs"]/div[2]/div/ul/li')
     lis.size.times do | count |
-      job = driver.find_element(:xpath => '//*[@id="result_jobs"]/div[2]/div/ul/li[' + "#{count + 1}" + ']')
+      job = driver.find_element(
+        :xpath => '//*[@id="result_jobs"]/div[2]/div/ul/li[' + "#{count + 1}" + ']'
+      )
       if job.tag_name == 'li'
         ref = job.attribute('data-href')
         text = job.text.gsub(/気になる！リストに追加\n?/, "")
       else
         raise "tag_name is not 'li'"
       end
+      sleep 1 # これすると、少しは持つのかな
+      $logging.puts(text)
       if /募集終了/ =~ job.text
         done = true
         break
@@ -61,10 +64,45 @@ def main
       puts "#{base_url}/#{ref}"
     end
     unless done
-      driver.find_element(:class => 'to_next_page').click
+      $logging.puts("click done:#{done}")
+      elm = driver.find_element(:class => 'to_next_page')
+      p elm.tag_name
+      elm.click
     end
   end
   driver.quit
+  $logging.puts("終了")
+end
+
+def login(driver, login_url, user, pass, confirm)
+  driver.get(login_url + "/")
+  params = {}
+  params[:xpath] = '//*[@id="SideMenu"]/ul/li[2]/a'
+  driver.find_element(params).click            # ログイン画面
+  params[:xpath] = '//*[@id="username"]'
+  driver.find_element(params).send_key user    # メールアドレス
+  params[:xpath] = '//*[@id="password"]'
+  driver.find_element(params).send_key pass    # パスワード
+  params[:xpath] = '//*[@id="Content"]/div[1]/form/div[2]/p/input[1]'
+  driver.find_element(params).click            # ログインする
+  params[:xpath] = '//*[@id="flash-notice"]/div/span'
+  elm = driver.find_element(params)            # 確認
+  if elm.text != confirm
+    raise "ログイン失敗"
+  end
+end
+
+if __FILE__ == $0 
+  begin
+    main
+  rescue Exception => eval
+    STDERR.puts eval.backtrace.join("\n")
+    STDERR.puts eval.to_s
+    $logging.puts eval.backtrace.join("\n")
+    $logging.puts eval.to_s
+    raise eval
+  end
+  exit true
 end
 
 =begin
@@ -148,34 +186,3 @@ end
  :__id__]
 
 =end
-
-
-def login(driver, login_url, user, pass, confirm)
-  begin
-    driver.get(login_url + "/")
-    params = {}
-    params[:xpath] = '//*[@id="SideMenu"]/ul/li[2]/a'
-    driver.find_element(params).click            # ログイン画面
-    params[:xpath] = '//*[@id="username"]'
-    driver.find_element(params).send_key user    # メールアドレス
-    params[:xpath] = '//*[@id="password"]'
-    driver.find_element(params).send_key pass    # パスワード
-    params[:xpath] = '//*[@id="Content"]/div[1]/form/div[2]/p/input[1]'
-    driver.find_element(params).click            # ログインする
-    params[:xpath] = '//*[@id="flash-notice"]/div/span'
-    elm = driver.find_element(params)            # 確認
-    if elm.text != confirm
-      raise "ログイン失敗"
-    end
-  rescue Exception => eval
-    $logging.puts eval.backtrace.join("\n")
-    STDERR.puts eval.backtrace.join("\n")
-    STDERR.puts eval
-    raise eval
-  end
-end
-
-if __FILE__ == $0 
-  main
-  exit true
-end
