@@ -23,6 +23,10 @@ def main
   driver.find_element(params).send_key pass    # パスワード
   params[:xpath] = '//*[@id=".save"]'
   driver.find_element(params).click            # ログインする
+  params[:xpath] = '//*[@id="AucSearchTxt"]'
+  driver.find_element(params).send_key "phenom x6"
+  params[:xpath] = '//*[@id="AucSearchSbmt"]'
+  driver.find_element(params).click
 end
 
 if __FILE__ == $0 
