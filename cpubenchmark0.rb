@@ -19,7 +19,8 @@ def main
       else
         cpumark = sprintf("%5s", field[1].inner_text)
       end
-      puts sprintf("%-50s %5s", name, cpumark)
+      #puts sprintf("%-50s %5s", name, cpumark)
+      puts sprintf("%5s %-50s", cpumark, name)
     end
   end
 end
