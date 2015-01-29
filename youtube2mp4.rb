@@ -1,14 +1,17 @@
 # encoding:utf-8
+# とりあえずは、mp4をダウンロードできる
+#
 require 'selenium-webdriver'
 
 class Convert
-  attr_accessor :driver, :element, :elements
+  attr_accessor :driver, :element, :elements, :download
 
   def main(mediaurl)
     url = "http://www.clipconverter.cc/jp/" # youtube変換サイト
 
     # ブラウザ起動
-    @driver = Selenium::WebDriver.for :firefox
+    #@driver = Selenium::WebDriver.for :firefox
+    @driver = Selenium::WebDriver.for :chrome
     @driver.navigate.to url
     wait = Selenium::WebDriver::Wait.new(:timeout => 10) # seconds
 
@@ -45,7 +48,8 @@ class Convert
     until ok == true
       begin
         downloads = @driver.find_elements(:id, 'downloadbutton')
-        downloads[0].click  # 
+        @download = downloads[0]
+        @download.click  # ２つあるので一つ目
         puts 'ダウンロードclick ok'
         ok = true
       rescue => eval
@@ -54,17 +58,27 @@ class Convert
         sleep 1
       end
     end
+  end
 
-    #sleep 5
-    #alert = driver.switch_to.alert  # ポップアップボックスを処理する
-    #alert.element[1].click
-    #alert.accept.click
-
+  def finish
     # ブラウザ終了
-    #driver.quit
+    @driver.quit
   end
 end
 
 if __FILE__ == $0
-  Convert.new.main ARGV[0]
+  download_dir = "/home/indou/ダウンロード"
+  ARGV.each do |url|
+    c = Convert.new
+    c.main url
+    file = File.join(download_dir, "*mp4.crdownload")
+    until Dir.glob(file) != []
+      sleep 1
+    end
+    while Dir.glob(file) != []
+      sleep 1
+    end
+    puts "done."
+    c.finish
+  end
 end
