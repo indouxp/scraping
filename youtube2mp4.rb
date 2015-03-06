@@ -22,7 +22,7 @@ class Convert
     until ok == true
       begin
         @driver.find_element(:id, 'submiturl').click       # 続行
-        puts '続行click ok'
+        puts '続行click ok #{Time.now.strftime("%Y/%m/%d %H:%M:%S")}'
         ok = true
       rescue => eval
         STDERR.puts '続行click でエラー、再試行します。'
@@ -35,7 +35,7 @@ class Convert
     until ok == true
       begin
         @driver.find_element(:xpath, '//*[@id="submitconvert"]/input').click   # 開始
-        puts '開始click ok'
+        puts '開始click ok #{Time.now.strftime("%Y/%m/%d %H:%M:%S")}'
         ok = true
       rescue => eval
         STDERR.puts '開始click でエラー、再試行します。'
@@ -50,7 +50,7 @@ class Convert
         downloads = @driver.find_elements(:id, 'downloadbutton')
         @download = downloads[0]
         @download.click  # ２つあるので一つ目
-        puts 'ダウンロード click ok'
+        puts 'ダウンロード click ok #{Time.now.strftime("%Y/%m/%d %H:%M:%S")}'
         ok = true
       rescue => eval
         STDERR.puts 'ダウンロード click でエラー、再試行します。'
