@@ -25,8 +25,8 @@ class Convert
         puts '続行click ok'
         ok = true
       rescue => eval
-        STDERR.puts '続行click でエラー'
-        STDERR.puts eval
+        STDERR.puts '続行click でエラー、再試行します。'
+        #STDERR.puts eval
         sleep 1
       end
     end
@@ -38,8 +38,8 @@ class Convert
         puts '開始click ok'
         ok = true
       rescue => eval
-        STDERR.puts '開始click でエラー'
-        STDERR.puts eval
+        STDERR.puts '開始click でエラー、再試行します。'
+        #STDERR.puts eval
         sleep 1
       end
     end
@@ -50,11 +50,11 @@ class Convert
         downloads = @driver.find_elements(:id, 'downloadbutton')
         @download = downloads[0]
         @download.click  # ２つあるので一つ目
-        puts 'ダウンロードclick ok'
+        puts 'ダウンロード click ok'
         ok = true
       rescue => eval
-        STDERR.puts 'ダウンロード click でエラー'
-        STDERR.puts eval
+        STDERR.puts 'ダウンロード click でエラー、再試行します。'
+        #STDERR.puts eval
         sleep 1
       end
     end
